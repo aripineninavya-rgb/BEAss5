@@ -38,7 +38,7 @@ printResult(false);
 
 // Interfaces and Type Aliases ( & means AND )
 
-// Exercise 4:
+// Exercise 1:
 interface Book {
   title: string;
   pages: number;
@@ -54,7 +54,7 @@ describeBook({
 });
 
 
-// Exercise 5:
+// Exercise 2:
 interface Teacher {
   name: string;
   subject: string;
@@ -81,7 +81,7 @@ printTeacherInfo({
 });
 
 
-// Exercise 6:
+// Exercise 3:
 interface Car {
   brand: string;
   year: number;
@@ -95,3 +95,92 @@ printCar({
   brand: "Tesla",
   year: 2024,
 });
+
+
+// Enums (fixed list of options) 
+
+// Exercise 1:
+enum Color {
+  Red,
+  Green,
+  Blue
+}
+
+function showColor(color: Color): void {
+  console.log(`You chose ${Color[color]}`);
+}
+
+// Test
+showColor(Color.Red);
+showColor(Color.Green);
+showColor(Color.Blue);
+
+// Exercise 2:
+enum PizzaSize {
+  Small,
+  Medium,
+  Large
+}
+
+function orderPizza(size: PizzaSize): void {
+  console.log(`You ordered a ${PizzaSize[size]} pizza.`);
+}
+
+// Test
+orderPizza(PizzaSize.Small);
+orderPizza(PizzaSize.Medium);
+orderPizza(PizzaSize.Large);
+
+// Exercise 3:
+enum Role {
+  Admin,
+  User,
+  Guest
+}
+
+function printRole(role: Role): void {
+  if (role === Role.Admin) {
+    console.log("You have full access");
+  } else if (role === Role.User) {
+    console.log("You have limited access");
+  } else {
+    console.log("You have guest access");
+  }
+}
+
+// Test
+printRole(Role.Admin);
+printRole(Role.User);
+printRole(Role.Guest);
+
+
+
+// Generics ( <T> means reusable placeholder ) 
+
+// Exercise 7:
+function wrapInArray<T>(item: T): T[] {
+  return [item];
+}
+
+// Test
+console.log(wrapInArray("cat")); // ["cat"]
+console.log(wrapInArray(10));    // [10]
+
+// Exercise 8:
+
+function firstItem<T>(arr: T[]): T  | undefined{
+  return arr[0];
+}
+
+// Test
+console.log(firstItem([1, 2, 3]));       // 1
+console.log(firstItem(["a", "b", "c"])); // "a"
+
+// Exercise 9:
+function swap<T>(a: T, b: T): T[] {
+  return [b, a];
+}
+
+// Test
+console.log(swap("hello", "world")); // ["world", "hello"]
+console.log(swap(1, 2));             // [2, 1]
